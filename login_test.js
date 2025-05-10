@@ -1,6 +1,6 @@
 Feature('login');
 
-Scenario('success login',  ({ I }) => {
+Scenario('Login com sucesso',  ({ I }) => {
 
     I.amOnPage('http://automationpratice.com.br/')
     I.click('Login')
@@ -9,41 +9,9 @@ Scenario('success login',  ({ I }) => {
     I.fillField('#password', 'dudu2203')
     I.click('#btnLogin')
     I.waitForText('Login realizado', 3)
-    I.wait(10)
-});
+}).tag('@sucesso');
 
-Scenario('Invalid email',  ({ I }) => {
-
-    I.amOnPage('http://automationpratice.com.br/')
-    I.click('Login')
-    I.waitForText('Login', 10)
-    I.fillField('#user', 'marcosedaraujo$gmail.zeca')
-    I.fillField('#password', 'dudu2203')
-    I.click('#btnLogin')
-    I.waitForText('E-mail inválido.')
-});
-
-Scenario('empty email',  ({ I }) => {
-
-    I.amOnPage('http://automationpratice.com.br/')
-    I.click('Login')
-    I.waitForText('Login', 10)
-    I.click('#btnLogin')
-    I.waitForText('E-mail inválido.')
-});
-
-Scenario('Invalid password',  ({ I }) => {
-
-    I.amOnPage('http://automationpratice.com.br/')
-    I.click('Login')
-    I.waitForText('Login', 10)
-    I.fillField('#user', 'marcosedaraujo@gmail.com')
-    I.fillField('#password', 'aa')
-    I.click('#btnLogin')
-    I.waitForText('Senha inválida.')
-});
-
-Scenario('Empty password',  ({ I }) => {
+Scenario('Tentando Logar digitando apenas o e-mail',  ({ I }) => {
 
     I.amOnPage('http://automationpratice.com.br/')
     I.click('Login')
@@ -51,4 +19,23 @@ Scenario('Empty password',  ({ I }) => {
     I.fillField('#user', 'marcosedaraujo@gmail.com')
     I.click('#btnLogin')
     I.waitForText('Senha inválida.')
+});
+
+Scenario('Tentando logar sem digitar e-mail e senha',  ({ I }) => {
+
+    I.amOnPage('http://automationpratice.com.br/')
+    I.click('Login')
+    I.waitForText('Login', 10)
+    I.click('#btnLogin')
+    I.waitForText('E-mail inválido.')
+});
+
+Scenario('Tentando Logar digitando apenas a senha',  ({ I }) => {
+
+    I.amOnPage('http://automationpratice.com.br/')
+    I.click('Login')
+    I.waitForText('Login', 10)
+    I.fillField('#password', 'zecapagodinho123')
+    I.click('#btnLogin')
+    I.waitForText('E-mail inválido.')
 });
